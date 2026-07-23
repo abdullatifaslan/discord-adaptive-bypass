@@ -73,9 +73,10 @@ Betik aşağıdaki modları en az yük bindirenden en ağıra doğru sırayla de
 | **L7** | **Extreme Force** | `-p -r -e 1 -f 1 -m --wrong-chksum` (Gelişmiş Tünelleme) |
 
 ## 📥 Kurulum ve Kullanım
+👉 **[v1.0 Sürümünü Doğrudan İndir (.zip)](https://github.com/abdullatifaslan/discord-adaptive-bypass/releases/download/v1.0/discord-adaptive-bypass-main.zip)**
 
-1. Projeyi bilgisayarınıza indirin ve bir klasöre çıkartın.
-2. Klasör içindeki **`start.bat`** dosyasına sağ tıklayıp **Yönetici Olarak Çalıştır**'a basın. Eğer akıllı kullanıcı denetimi uyarisi veriyorsa windows güvenliğinde uygulamalar bölümünde bu ayarı kapatıp tekrar çalıştırın.
+1. Projeyi yukarıdaki linkten bilgisayarınıza indirin ve bir klasöre çıkartın.
+2. Klasör içindeki **`start.bat`** dosyasına sağ tıklayıp **Yönetici Olarak Çalıştır**'a basın. Eğer akıllı kullanıcı denetimi uyarısı veriyorsa windows güvenliğinde uygulamalar bölümünde bu ayarı kapatıp tekrar çalıştırın.
 3. Betik saniyeler içinde hattınız için çalışan en uygun konfigürasyonu bulacak ve kilitleyecektir.
 4. **İşiniz bittiğinde pencereyi kapatmanız yeterlidir.** Bekçi protokolü arkadaki tüm sürücüleri ve dosyaları otomatik olarak temizleyecektir.
 
