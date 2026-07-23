@@ -52,7 +52,7 @@ function Show-Header {
     Draw-Text "   |  \  |  [__   |     |  |  |__/  |  \" Yellow Cyan
     Draw-Text "   |__/  |  ___]  |___  |__|  |  \  |__/" Yellow Cyan
     Draw-Text "" Yellow Cyan
-    Draw-Text "    ADAPTIVE DPI BYPASS ENGINE  |  V6.6 (VALDIKSS CORE)" Cyan Cyan
+    Draw-Text "    ADAPTIVE DPI BYPASS ENGINE  |  V1.0" Cyan Cyan
     Draw-Line $cBL $cBR Cyan
     Write-Host ""
 }
