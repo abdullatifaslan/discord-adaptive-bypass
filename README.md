@@ -90,4 +90,4 @@ Bu betik yalnızca eğitim, ağ analizi, sistem optimizasyonu ve kişisel kullan
 
 ## 🙏 Teşekkürler
 
-Çekirdek motor için [ValdikSS/GoodbyeDPI](https://github.com/ValdikSS/GoodbyeDPI) projesine ve açık kaynak topluluğuna teşekkür ederiz.
+Çekirdek engine için [ValdikSS/GoodbyeDPI](https://github.com/ValdikSS/GoodbyeDPI) projesine ve açık kaynak topluluğuna teşekkür ederiz.

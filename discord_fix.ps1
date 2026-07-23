@@ -1,15 +1,11 @@
-# ==============================================================================
-# DISCORD ADAPTIVE BYPASS ENGINE V1.0
-# ==============================================================================
-
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Net.Http -ErrorAction SilentlyContinue
 
-# Konsolu UTF-8 moduna zorla
+# Console UTF-8 Configuration
 $null = & chcp 65001 2>&1
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-# 1. YONETICI YETKISI KONTROLU
+# Administrative Privilege Verification
 $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = New-Object Security.Principal.WindowsPrincipal($identity)
 if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
@@ -23,15 +19,15 @@ $workingDir = 'C:\Discord_Bypass_Tool'
 if (-not (Test-Path $workingDir)) { New-Item -ItemType Directory -Path $workingDir | Out-Null }
 Set-Location -Path $workingDir
 
-# 2. SABIT KUTU CIZIM MOTORU (KAYMA YAPMAZ)
-$cTL = [char]0x250C # ┌
-$cTR = [char]0x2510 # ┐
-$cBL = [char]0x2514 # └
-$cBR = [char]0x2518 # ┘
-$cH  = [char]0x2500 # ─
-$cV  = [char]0x2502 # │
-$cM  = [char]0x251C # ├
-$cMR = [char]0x2524 # ┤
+# UI Rendering Engine
+$cTL = [char]0x250C
+$cTR = [char]0x2510
+$cBL = [char]0x2514
+$cBR = [char]0x2518
+$cH  = [char]0x2500
+$cV  = [char]0x2502
+$cM  = [char]0x251C
+$cMR = [char]0x2524
 $WIDTH = 73
 
 function Draw-Line([string]$L, [string]$R, [ConsoleColor]$Color) {
@@ -61,7 +57,7 @@ function Show-Header {
     Write-Host ""
 }
 
-# 3. TEMIZLIK PROTOKOLU
+# Network & Driver Purge
 function Invoke-NuclearCleanup {
     Get-Process -Name 'goodbyedpi' -ErrorAction SilentlyContinue | Stop-Process -Force
     $null = & sc.exe stop WinDivert 2>&1
@@ -73,13 +69,12 @@ Write-Host " [*] Sistem temizleniyor ve ortam hazirlaniyor..." -ForegroundColor 
 
 Invoke-NuclearCleanup
 
-# 4. VALDIKSS RESMI REPOSUNDAN MOTOR INDIRME
+# Core Binary Verification & Fetching
 $exeFile = Get-ChildItem -Path $workingDir -Filter 'goodbyedpi.exe' -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
 
 if ($null -eq $exeFile) {
-    Write-Host " [+] ValdikSS resmi reposundan motor indiriliyor, lutfen bekleyin..." -ForegroundColor Yellow
+    Write-Host " [+] Resmi motor bileşenleri indiriliyor..." -ForegroundColor Yellow
     
-    # Doğrudan Orijinal ValdikSS Sürümü (Upstream)
     $url = 'https://github.com/ValdikSS/GoodbyeDPI/releases/download/0.2.3rc3/goodbyedpi-0.2.3rc3-2.zip'
     $zipPath = Join-Path -Path $workingDir -ChildPath 'src.zip'
     
@@ -87,7 +82,6 @@ if ($null -eq $exeFile) {
     Expand-Archive -Path $zipPath -DestinationPath $workingDir -Force
     Remove-Item -Path $zipPath -ErrorAction SilentlyContinue
     
-    # ZIP icindeki alt klasörlerde (x86_64) yer alan exe'yi otomatik bulur
     $exeFile = Get-ChildItem -Path $workingDir -Filter 'goodbyedpi.exe' -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
 }
 
@@ -95,7 +89,7 @@ $hostPath = Join-Path -Path $exeFile.DirectoryName -ChildPath 'discord_hosts.txt
 $hostsList = @('discord.com', 'discordapp.com', 'discordapp.net', 'discord.gg', 'gateway.discord.gg', 'cdn.discordapp.com', '*.discord.gg')
 $hostsList | Out-File -FilePath $hostPath -Encoding ascii -Force
 
-# 5. DNS VE METOT HAVUZU
+# Adaptive Matrix Setup
 $dnsPool = @(
     @{ Name = 'Cloudflare';        IP = '1.1.1.1';         Port = '53' },
     @{ Name = 'Google DNS';        IP = '8.8.8.8';         Port = '53' },
@@ -113,7 +107,7 @@ $methods = @(
     @{ Name = 'L7: Extreme';       Cmd = '-p -r -e 1 -f 1 -m --wrong-chksum' }
 )
 
-# 6. HIZLI TARAMA
+# Socket Probe Engine
 Show-Header
 Write-Host " [*] Baglanti taramasi baslatildi..." -ForegroundColor Yellow
 Write-Host "     Metotlar deneniyor:`n" -ForegroundColor DarkGray
@@ -164,7 +158,6 @@ foreach ($m in $methods) {
 
 $httpClient.Dispose()
 
-# 7. SONUC VE EKRAN
 Show-Header
 
 if ($bestArgs -eq '') {
@@ -187,15 +180,10 @@ Draw-Text ("   >> AKTIF DNS PROXY : " + $bestDnsName) White Green
 Draw-Line $cBL $cBR Green
 Write-Host ""
 
-# ==============================================================================
-# 8. KUSURSUZ BEKÇİ (SÜRÜCÜ TEMİZLİĞİ DAHİL)
-# ==============================================================================
-
+# Guard Process & Driver Cleanup Protocol
 $exePath    = $exeFile.FullName
 $parentPID  = $PID
 
-# Bekçi komutu: GoodbyeDPI'yi başlat, ana pencereyi bekle,
-# pencere kapanınca süreci öldür, sonra WinDivert sürücüsünü temizle.
 $guardCommand = @"
 `$proc = Start-Process -FilePath '$exePath' -ArgumentList '$bestArgs' -WindowStyle Hidden -PassThru
 `$parent = Get-Process -Id $parentPID -ErrorAction SilentlyContinue
@@ -205,13 +193,11 @@ if (`$parent) {
 } else {
     if (-not `$proc.HasExited) { `$proc.Kill() }
 }
-# WinDivert sürücüsünü durdur ve sil, böylece dosya kilitleri kalkar
 Start-Sleep -Seconds 2
 & sc.exe stop WinDivert 2>&1 | Out-Null
 & sc.exe delete WinDivert 2>&1 | Out-Null
 "@
 
-# Bekçiyi bağımsız, gizli bir PowerShell olarak başlat
 Start-Process powershell -ArgumentList "-WindowStyle Hidden -ExecutionPolicy Bypass -Command `"$guardCommand`"" -WindowStyle Hidden
 
 Write-Host " [ONLINE] " -NoNewline -ForegroundColor Black -BackgroundColor Green
@@ -220,7 +206,6 @@ Write-Host " [*] Pencere kapatildiginda GoodbyeDPI ve surucu tamamen temizlenir.
 Write-Host " [*] Klasor artik silinebilir duruma gelir." -ForegroundColor Cyan
 Write-Host ""
 
-# Ana döngü - pencereyi açık tutar
 while ($true) { 
     Start-Sleep -Seconds 60
 }

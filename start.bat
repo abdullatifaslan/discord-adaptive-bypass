@@ -6,5 +6,4 @@ if %errorlevel% neq 0 (
     exit /b
 )
 
-:: PowerShell'i konsolu kapatmayacak şekilde (-NoExit) çalıştırıyoruz
 powershell.exe -NoExit -NoProfile -ExecutionPolicy Bypass -File "%~dp0discord_fix.ps1"
