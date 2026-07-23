@@ -52,7 +52,7 @@ function Show-Header {
     Draw-Text "   |  \  |  [__   |     |  |  |__/  |  \" Yellow Cyan
     Draw-Text "   |__/  |  ___]  |___  |__|  |  \  |__/" Yellow Cyan
     Draw-Text "" Yellow Cyan
-    Draw-Text "    ADAPTIVE DPI BYPASS ENGINE  |  V1.0" Cyan Cyan
+    Draw-Text "    ADAPTIVE BYPASS ENGINE  |  V1.0    " Cyan Cyan
     Draw-Line $cBL $cBR Cyan
     Write-Host ""
 }
@@ -73,7 +73,7 @@ Invoke-NuclearCleanup
 $exeFile = Get-ChildItem -Path $workingDir -Filter 'goodbyedpi.exe' -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
 
 if ($null -eq $exeFile) {
-    Write-Host " [+] Resmi motor bileşenleri indiriliyor..." -ForegroundColor Yellow
+    Write-Host " [+] Resmi engine bileşenleri indiriliyor..." -ForegroundColor Yellow
     
     $url = 'https://github.com/ValdikSS/GoodbyeDPI/releases/download/0.2.3rc3/goodbyedpi-0.2.3rc3-2.zip'
     $zipPath = Join-Path -Path $workingDir -ChildPath 'src.zip'
@@ -203,7 +203,7 @@ Start-Process powershell -ArgumentList "-WindowStyle Hidden -ExecutionPolicy Byp
 Write-Host " [ONLINE] " -NoNewline -ForegroundColor Black -BackgroundColor Green
 Write-Host " Discord baglantisi saglandi. Bu pencereyi kucultebilirsiniz." -ForegroundColor White
 Write-Host " [*] Pencere kapatildiginda GoodbyeDPI ve surucu tamamen temizlenir." -ForegroundColor Cyan
-Write-Host " [*] Klasor artik silinebilir duruma gelir." -ForegroundColor Cyan
+Write-Host " [*] Kapatildiktan sonra klasor artik silinebilir duruma gelir." -ForegroundColor Cyan
 Write-Host ""
 
 while ($true) { 
