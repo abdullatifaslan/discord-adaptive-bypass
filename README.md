@@ -80,6 +80,13 @@ Betik aşağıdaki modları en az yük bindirenden en ağıra doğru sırayla de
 3. Betik saniyeler içinde hattınız için çalışan en uygun konfigürasyonu bulacak ve kilitleyecektir.
 4. **İşiniz bittiğinde pencereyi kapatmanız yeterlidir.** Bekçi protokolü arkadaki tüm sürücüleri ve dosyaları otomatik olarak temizleyecektir.
 
+> [!NOTE]
+> **Antivirüs / Windows Defender Uyarısı Hakkında**  
+> Araç, ağ paket tünellemesi yaptığı ve henüz yeni yayınlanan açık kaynaklı bir proje olduğu için Windows Defender veya tarayıcınız yanlış alarm (**False Positive**) verebilir.
+> 
+> * **İndirme Engeli Alırsanız:** İndirme esnasında Defender uyarısı çıkarsa, *Gerçek Zamanlı Koruma (Real-Time Protection)* özelliğini geçici olarak kapatıp dosyayı indirebilirsiniz.
+> * **Şeffaflık:** Proje %100 açık kaynaklıdır. Dileyen herkes klasör içindeki `.ps1` ve `.bat` kodlarını çalıştırılmadan önce tıklayıp inceleyebilir.
+
 ## 💡 İleri Düzey Notlar & Alternatifler
 
 - **Diğer DPI Araçlarıyla Kullanım:** Bu araç kapandığı an sürücüleri tamamen temizlediği için sisteminizde başka bir VPN veya DPI aracı çalıştıracağınız zaman çakışma yaşamazsınız.
