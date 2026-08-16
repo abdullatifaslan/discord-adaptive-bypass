@@ -10,6 +10,7 @@
 [![Stars](https://img.shields.io/github/stars/abdullatifaslan/discord-adaptive-bypass?style=for-the-badge&color=gold)](https://github.com/abdullatifaslan/discord-adaptive-bypass/stargazers)
 [![Issues](https://img.shields.io/github/issues/abdullatifaslan/discord-adaptive-bypass?style=for-the-badge&color=red)](https://github.com/abdullatifaslan/discord-adaptive-bypass/issues)
 [![Windows](https://img.shields.io/badge/OS-Windows--10%2F11-0078D6?style=for-the-badge&logo=windows)](https://www.microsoft.com/windows)
+[![VirusTotal](https://img.shields.io/badge/VirusTotal-Clean-brightgreen?logo=virustotal)](https://www.virustotal.com/gui/url/576cab361d3616824616dce41cc8c751cc4bb87a50118602e25c6967a742d78a/detection)
 
 <br />
 
